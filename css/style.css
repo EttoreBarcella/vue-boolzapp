@@ -6,6 +6,7 @@
 }
 /* COMMON */
 body{
+     background: linear-gradient(to bottom, rgb(0,150,136) 17%,rgb(214,219,216) 17%,rgb(214,219,216) 17%,rgb(214,219,216) 100%);
     height: 100vh;
 }
 /* BG & COLORS */
@@ -22,7 +23,7 @@ body{
 .bg_sand{
     background-color: #f3eeea;
 }
-.chat{
+.container_chat{
     background-image: url(../img/mine.jpg);
 }
 .active_notifications{
@@ -36,10 +37,16 @@ body{
 .search_bar{
     background-color: #eaeaea;
 }
+.last_seen{
+    color: gray;
+}
+.active_friend{
+    background-color: lightgray;
+}   
 /* CONTAINERS */
 
 .container{
-    height: 100vh;
+    height: 90vh;
 }
 
 .container_sender{
@@ -49,32 +56,30 @@ body{
 .container_reciever{
     width: 65%;
 }
+.container_chat{
+    height: 100%;
+}
 
 .bg_users,.notifications,.send_message{
     min-height: 60px;
 }
 
-.container_chat{
-    height: calc(100vh - 60px);
-}
-.row{
-    border: 1px solid rgb(0, 0, 0);
-}
 /* MAIN */
 i{
     padding: 0px 5px;
     color: #b1b1b1;
 }
 .chat{
-    border: 1px solid black;
-    flex-grow: 1;
+    height: 100%;
+    overflow-y: auto;
 }
 .audio,.emoji{
     width: 10%;
 }
 .friend_list li{
     list-style: none;
-    padding: 5px;
+    padding-left: 20px;
+    padding-top: 5px;
 } 
 .friend_list ul{
     margin-left: 0;
@@ -87,6 +92,23 @@ i{
 .bell_style{
     padding: 12px 10px;
     border-radius: 60px;
+}
+.border_box{
+    border-right: 1px solid lightgray;
+}
+.last_seen{
+    margin-top: -8px;
+    font-size: small;
+}
+.active_friend{
+    position: relative;
+}
+.time{
+    color: #818181;
+    flex-grow: 1;
+    position: absolute;
+    top: 5px;
+    right: 5px;
 }
 /* BUTTONS & SEARCH BAR STYLE*/
 
@@ -108,7 +130,25 @@ i{
 .input_box_message{
     height: 40px;
 }
+/* MESSAGES */
+.message_sent, .message_recieved{
+    display: flex;
+    flex-wrap: wrap;
+    margin: 10px;
+    width: 40%;
+    padding: 10px 20px;
+    border-radius: 10px;
+ }
+ .message_sent{
+     margin-left: 450px;
+     background-color: #d5f9ba;
+ }
 
+ .message_recieved{
+     margin-left:50px;
+     background-color: #ffffff;
+
+ }
 /* STYLE EFFECTS */
 .friends_list li:hover{
     background-color: lightgray;

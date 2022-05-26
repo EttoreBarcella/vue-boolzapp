@@ -16,10 +16,10 @@
     </head>
     <body>
         <div id="app">
-            <div class="container d-flex my-4 bg-white">
+            <div class="container  d-flex my-4 bg-white p-0">
                 <!-- box sender-->
-                <div class="container_sender d-flex flex-column">
-                    <div class="bg_header_left d-flex justify-content-between align-items-center bg_users px-3">
+                <div class="container_sender d-flex flex-column justify-content-between">
+                    <div class="border_box bg_header_left d-flex justify-content-between align-items-center bg_users px-3">
                         <div>
                             <img class="img_profile" src="img/avatar_io.jpg" alt=""> io
                         </div>
@@ -46,36 +46,55 @@
                     <!-- friendlist  -->
                     <div class="friend_list overflow-auto flex-grow-1">
                         <ul>
-                            <li v-for="(user,index) in contacts">
-                                <img class="img_profile" :src="'img/avatar'+ user.avatar+'.jpg'" alt="">
-                                {{user.name}}
-                            </li>
+                            <li v-for="(user,index) in contacts " @click="changeAvatar(index)" :class="currentIndex === index ? 'active_friend' : null" >
+                                <img class="img_profile" :src="'img/avatar'+user.avatar+'.jpg'" alt="user.name" >
+                                <div class="name_box">
+                                <h6>{{user.name}}</h6>
+                                <div class="last_seen">messaggio inviato</div>
+                                </div>
+                                <div class="time small d-flex justify-content-end">12:00</div>
                         </ul>
                     </div>
                 </div>
                 <!-- box reciever-->
-                <div class="container_reciever">
+                <div class="container_reciever h-100 d-flex flex-column justify-content-between">
                     <div class="bg_header_right d-flex justify-content-between align-items-center bg_users px-3">
-                        <div>user reciever</div>
+                        <div class="box_avatar_reciever d-flex">
+                            <img class="img_profile" :src="'img/avatar'+contacts[currentIndex].avatar+'.jpg'" alt="user.name" >
+                            <div class="name_box">
+                                <h6>{{contacts[currentIndex].name}}</h6>
+                                <div class="last_seen">Ultimo accesso oggi alle 12:00</div>
+                            </div>
+                        </div>
                         <span>
                             <i class="fa-solid fa-magnifying-glass"></i>
                             <i class="fa-solid fa-paperclip"></i>
                             <i class="fa-solid fa-ellipsis-vertical"></i>
                         </span>
                     </div>
-                    </div>
                     <!-- chat  -->
-                    <div class="container_chat d-flex flex-column justify-content-between">
-                        <div class="chat">test</div>
-                        <div class="send_message d-flex justify-content-between align-items-center bg_sand">
-                            <div class="emoji d-flex justify-content-center px-2">
-                                <i class="fa-solid fa-face-smile"></i>
+                    <div class="container_chat">
+                        <div v-for="(message,index) in contacts[currentIndex].messages ">
+                            <div v-if="message.status === 'sent'" class="row_sender">
+                                <div  class="message_sent">
+                                   {{message.message}}
+                                </div> 
                             </div>
-                            <input class="input_box_message" type="text" placeholder="scrivi un messaggio">
-                            <div class="audio d-flex justify-content-center">
-                                <i class="fa-solid fa-microphone px-2"></i>
+                            <div v-else class="row_recipient">
+                                <div class="message_recieved">
+                                    {{message.message}}
+                                </div>                               
                             </div>
-    
+
+                        </div>
+                    </div>
+                    <div class="send_message d-flex justify-content-between align-items-center bg_sand">
+                        <div class="emoji d-flex justify-content-center px-2">
+                            <i class="fa-solid fa-face-smile"></i>
+                        </div>
+                        <input class="input_box_message" type="text" placeholder="scrivi un messaggio">
+                        <div class="audio d-flex justify-content-center">
+                            <i class="fa-solid fa-microphone px-2"></i>
                         </div>
                     </div>
                 </div>
