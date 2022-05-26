@@ -18,30 +18,65 @@
         <div id="app">
             <div class="container d-flex my-4 bg-white">
                 <!-- box sender-->
-                <div class="container_sender">
-                    <div class="bg_header_left d-flex justify-content-between align-items-center bg_users px-3">profilo utente <span>icon</span></div>
+                <div class="container_sender d-flex flex-column">
+                    <div class="bg_header_left d-flex justify-content-between align-items-center bg_users px-3">
+                        <div>
+                            <img class="img_profile" src="img/avatar_io.jpg" alt=""> io
+                        </div>
+                        <span>
+                            <i class="fa-solid fa-circle-notch"></i>
+                            <i class="fa-solid fa-message"></i>
+                            <i class="fa-solid fa-ellipsis-vertical"></i>
+                        </span>
+                    </div>
                     <!-- notifications  -->
-                    <div class="bg_heavenly notifications d-flex align-items-center px-3">notifiche</div>
+                    <div class="bg_heavenly notifications d-flex align-items-center px-3">
+                        <i class="fa-solid fa-bell-slash bell_style"></i>
+                        <div class="small px-2">
+                        <span>Ricevi notifiche di nuovi messaggi</span>
+                        <br>
+                        <span class="active_notifications" >Attiva notifiche desktop</span>
+                    </div>
+                    </div>
                     <!-- search  -->
                     <div class="bg_header_left search_box d-flex justify-content-center align-items-center py-2">
                         <button class="btn_style d-flex border-0 justify-content-center"><i class="fa-solid fa-magnifying-glass"></i></button>
                         <input class="search_bar d-flex border-0" type="text" placeholder="Cerca o inizia una nuova chat">
                     </div> 
                     <!-- friendlist  -->
-                    <div class="friend_list">
+                    <div class="friend_list overflow-auto flex-grow-1">
                         <ul>
-                            <li>test</li>
+                            <li v-for="(user,index) in contacts">
+                                <img class="img_profile" :src="'img/avatar'+ user.avatar+'.jpg'" alt="">
+                                {{user.name}}
+                            </li>
                         </ul>
                     </div>
                 </div>
                 <!-- box reciever-->
-                <div class="container_reciever ">
-                    <div class="bg_header_right d-flex justify-content-between align-items-center bg_users px-4">profilo utente <span>icon</span></div>
+                <div class="container_reciever">
+                    <div class="bg_header_right d-flex justify-content-between align-items-center bg_users px-3">
+                        <div>user reciever</div>
+                        <span>
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                            <i class="fa-solid fa-paperclip"></i>
+                            <i class="fa-solid fa-ellipsis-vertical"></i>
+                        </span>
+                    </div>
+                    </div>
                     <!-- chat  -->
                     <div class="container_chat d-flex flex-column justify-content-between">
-                        <div>test</div>
-                        <!-- send message  -->
-                        <div>test</div>
+                        <div class="chat">test</div>
+                        <div class="send_message d-flex justify-content-between align-items-center bg_sand">
+                            <div class="emoji d-flex justify-content-center px-2">
+                                <i class="fa-solid fa-face-smile"></i>
+                            </div>
+                            <input class="input_box_message" type="text" placeholder="scrivi un messaggio">
+                            <div class="audio d-flex justify-content-center">
+                                <i class="fa-solid fa-microphone px-2"></i>
+                            </div>
+    
+                        </div>
                     </div>
                 </div>
             </div>
