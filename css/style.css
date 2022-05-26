@@ -18,7 +18,6 @@ body{
 }
 .btn_style{
     color: rgb(116, 116, 116);
-    background-color: rgb(255, 255, 255);
 }
 .bg_sand{
     background-color: #f3eeea;
@@ -26,7 +25,17 @@ body{
 .chat{
     background-image: url(../img/mine.jpg);
 }
-
+.active_notifications{
+    text-decoration: underline;
+    color: grey;
+} 
+.bell_style{
+    background-color: white;
+    color: #8ed8fa;
+}
+.search_bar{
+    background-color: #eaeaea;
+}
 /* CONTAINERS */
 
 .container{
@@ -74,6 +83,10 @@ i{
 .img_profile{
     width: 50px;
     border-radius: 50px;
+}
+.bell_style{
+    padding: 12px 10px;
+    border-radius: 60px;
 }
 /* BUTTONS & SEARCH BAR STYLE*/
 
