@@ -1,8 +1,10 @@
+var DateTime = luxon.DateTime;
 const app = new Vue({
     el: '#app',
 
     data:{
         currentIndex: 0,
+        newMessage:'',
         contacts: [
             {
                 name: 'Michele',
@@ -172,6 +174,16 @@ const app = new Vue({
         changeAvatar(index){
             this.currentIndex = index;
             console.log(this.currentIndex);
+        },
+        addMessage(){ 
+            const now = DateTime.now().toFormat("dd/MM/yyyy HH:mm:ss");
+            if( this.newMessage !== ''){
+                this.contacts[this.currentIndex].messages.push({message : this.newMessage, status : 'sent' , date: now});
+                this.newMessage = ''; 
+                const myTimeout = setTimeout(()=>{
+                    this.contacts[this.currentIndex].messages.push({message : 'ok', status : 'received' , date:now});
+                }, 2000)
+             }
         },
     },
 }

@@ -110,6 +110,13 @@ i{
     top: 5px;
     right: 5px;
 }
+.time_stamp{
+    display: flex;
+    justify-content: flex-end;
+    flex-grow: 1;
+    font-size: small;
+    text-align: right;
+}
 /* BUTTONS & SEARCH BAR STYLE*/
 
 .search_bar,.btn_style,.input_box_message{
